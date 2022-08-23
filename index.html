@@ -78,7 +78,7 @@
 <main class="form-signin w-100 m-auto">
 
     <img class="mb-4" src="https://cdn-icons-png.flaticon.com/512/2572/2572665.png" alt="" width="72" height="57">
-    <h1 class="h3 mb-3 fw-normal">Encriptar</h1>
+    <h1 class="h3 mb-3 fw-normal">Criptografar</h1>
 
     <div class="form-floating">
       <input type="text" class="form-control" id="frase" placeholder="name@example.com">
@@ -89,10 +89,7 @@
       <label for="floatingPassword">Encriptado</label>
     </div>
 
-    <div class="form-floating">
-      <input type="text" class="form-control" id="resultado_2" placeholder="Password">
-      <label for="floatingPassword">Descriptado</label>
-    </div>
+   
 
     
 
@@ -101,15 +98,40 @@
         <input type="checkbox" value="remember-me"> Remember me
       </label>
     </div> -->
-    <button class="w-100 btn btn-lg btn-primary" type="button" onclick="teste()">Aplicar</button>
+    <button class="w-100 btn btn-lg btn-primary" type="button" onclick="encriptar()">Aplicar</button>
    
  
 </main>
+<main class="form-signin w-100 m-auto">
+
+  <img class="mb-4" src="https://static.thenounproject.com/png/944806-200.png" alt="" width="72" height="57">
+  <h1 class="h3 mb-3 fw-normal">Descriptografar</h1>
+
+  <div class="form-floating">
+    <input type="text" class="form-control" id="frase" placeholder="name@example.com">
+    <label for="frase">Digite a frase</label>
+  </div>
+
+  <div class="form-floating">
+    <input type="text" class="form-control" id="resultado_2" placeholder="Password">
+    <label for="floatingPassword">Descriptado</label>
+  </div>
+
+  
+
+  <!-- <div class="checkbox mb-3">
+    <label>
+      <input type="checkbox" value="remember-me"> Remember me
+    </label>
+  </div> -->
+  <button class="w-100 btn btn-lg btn-primary" type="button" onclick="descriptar()">Aplicar</button>
+ 
+
+</main>
 
 <script>
-  function teste(){
+  function encriptar(){
     var new_frase_crip = [];
-    var new_frase_free = [];
     var frase = Array;
     var alfa = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
     frase = document.getElementById('frase').value;
@@ -119,23 +141,44 @@
             for (let aux = 0; aux < alfa.length; aux++) {
               if(frase[index].toUpperCase() === alfa[aux]){
                 new_frase_crip[index] = alfa[(aux + 3) % 26];
-                new_frase_free[index] = alfa[(((aux + 3) % 26) - 3) % 26];
                 break;
               }
             }
           }else{
             new_frase_crip[index] = ' ';
-            new_frase_free[index] = ' ';
           }
          
     }
     new_frase_crip = new_frase_crip.join("");
-    new_frase_free = new_frase_free.join("");
     document.getElementById('resultado').value = new_frase_crip;
-    document.getElementById('resultado_2').value = new_frase_free;
     
   }
    
+
+  function descriptar(){
+    var new_frase_free = [];
+    var frase = Array;
+    var alfa = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+    frase = document.getElementById('frase').value;
+     
+    for (let index = 0; index < frase.length; index++) {
+          if(frase[index] != ' '){
+            for (let aux = 0; aux < alfa.length; aux++) {
+              if(frase[index].toUpperCase() === alfa[aux]){
+        
+                new_frase_free[index] = alfa[(((aux + 3) % 26) - 3) % 26];
+                break;
+              }
+            }
+          }else{
+            new_frase_free[index] = ' ';
+          }
+         
+    }
+    new_frase_free = new_frase_free.join("");
+    document.getElementById('resultado_2').value = new_frase_free;
+    
+  }
 </script>
     
   </body>
